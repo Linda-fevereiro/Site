@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação do Site - Slide</title>
+    <style>
+        :root {
+            --font-link-header: "Bebas Neue", sans-serif;
+            --font-texto: "Saira", sans-serif;
+            --background-color: LightBlue;
+            --text-color: #000000;
+            --button-bg-color: #e0e0e0;
+            --button-text-color: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+
+        button.dark {
+            background-color: var(--button-bg-color);
+            color: var(--button-text-color);
+            padding: 2px 5px;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        button.dark:hover {
+            opacity: 0.8;
+            background-color: LightSteelBlue;
+        }
+
+        body.dark-mode {
+            --background-color: MidnightBlue;
+            --text-color: #ffffff;
+            --button-bg-color: #333333;
+            --button-text-color: #ffffff;
+        }
+
+        .menu {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            background-color: 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .menu img {
+            height: 70px; /* Ajustado para o tamanho da logo */
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-toggle img {
+            height: 30px; /* Ajustado para o tamanho da logo */
+            width: auto;
+        }
+
+        .slideshow-container {
+            max-width: 600px;
+            position: relative;
+            margin: auto;
+        }
+
+        .slides {
+            display: none;
+            text-align: center;
+        }
+
+        .slides img {
+            width: 70%;
+            border-radius: 10px;
+        }
+
+        .text {
+            color: #333;
+            font-size: 16px;
+            padding: 15px 20px;
+            margin-top: 10px;
+            text-align: justify;
+            font-family: 'Saira', sans-serif;
+            background-color: LightSteelBlue;
+            border-radius: 5px;
+        }
+
+        .text a.button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 2px 5px;
+            font-size: 14px;
+            color: yellow;
+            background-color: LightSteelBlue;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text a.button:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .dots {
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from { opacity: .4 }
+            to { opacity: 1 }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <div class="theme-toggle">
+            <button class="dark" id="themeToggle"><img class="alterar" src="tema.png" alt="Tema"></button>
+        </div>
+    </header>
+
+    <div class="slideshow-container">
+        <!-- Slide 1 -->
+        <div class="slides fade">
+            <img src="logo2.png" alt="Slide 1">
+            <div class="text">
+                <center>Bem-vindo a InclusionTechnician!</center>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slides fade">
+            <img src="images.png" alt="Slide 2">
+            <div class="text">
+                A Inclusion Technician é uma plataforma de apoio escolar para alunos autistas e com TDAH, que estão cursando tanto a educação infantil quanto o fundamental 1, visando a formação educacional inicial dessas crianças. Nosso objetivo é promover a educação inclusiva e oferecer apoio tanto para alunos quanto para seus responsáveis.
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slides fade">
+            <img src="ods.png" alt="Slide 3">
+            <div class="text">
+                A InclusionTechnician busca uma educação de qualidade, renovando a educação por meio da inovação tecnológica e reduzindo a desigualdade para crianças com Autismo e TDAH. Abrangemos os seguintes ODS:
+                <ul>
+                    <li>3 - Saúde e Bem-estar</li>
+                    <li>4 - Educação de Qualidade</li>
+                    <li>10 - Redução das Desigualdades</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slides fade">
+            <img src="login.png" alt="Slide 4">
+            <div class="text">
+                Faça seu cadastro e junte-se ao time da Inclusion Technician!<br><br>
+                <a href="cadastrar.html" class="button">Cadastrar</a>
+            </div>
+        </div>
+
+        <!-- Novo Slide -->
+        <div class="slides fade">
+            <img src="curriculo.png" alt="Slide 5">
+            <div class="text">
+                Quer saber mais sobre os profissionais de apoio? Quer mostrar seu profissionalismo? Confira nosso banco de currículos e faca parte do futuro desse pequenos.<br><br>
+                <a href="curriculo.html" class="button">Currículo</a>
+            </div>
+        </div>
+
+        <!-- Botões de navegação -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <div class="dots">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+                        for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+
+        // Adiciona slideshow automático
+        let slideInterval = setInterval(function() {
+            plusSlides(1);
+        }, 10000); // Muda de slide a cada 10 segundos
+
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.querySelector('body').classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
+
