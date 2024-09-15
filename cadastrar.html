@@ -52,7 +52,7 @@
         }
 
         .menu img {
-            height: 70px; /* Tamanho da logo */
+            height: 70px;
             width: auto;
         }
 
@@ -62,7 +62,7 @@
         }
 
         .theme-toggle img {
-            height: 30px; /* Tamanho da imagem de troca de tema igual ao da logo */
+            height: 30px;
             width: auto;
         }
 
@@ -73,7 +73,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 350px;
-            margin-top: 80px; /* Espaço para o header fixo */
+            margin-top: 80px;
         }
 
         h2 {
@@ -161,7 +161,7 @@
 
     <div class="container">
         <h2>Formulário de Inscrição</h2>
-        <form id="registrationForm" action="login.html" method="post">
+        <form id="registrationForm" onsubmit="saveDataAndRedirect(event)">
             <div class="form-group">
                 <label for="studentName">Nome do Aluno:</label>
                 <input type="text" id="studentName" name="studentName" required>
@@ -205,6 +205,37 @@
     </div>
 
     <script>
+        function saveDataAndRedirect(event) {
+            event.preventDefault(); // Evita o envio padrão do formulário
+
+            var studentName = document.getElementById('studentName').value;
+            var disabilityType = document.getElementById('disabilityType').value;
+            var age = document.getElementById('age').value;
+            var guardianName = document.getElementById('guardianName').value;
+            var guardianEmail = document.getElementById('guardianEmail').value;
+            var phone = document.getElementById('phone').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Verifica se a senha e a confirmação são iguais
+            if (password !== confirmPassword) {
+                alert('As senhas não coincidem!');
+                return;
+            }
+
+            // Armazena os dados no localStorage
+            localStorage.setItem('studentName', studentName);
+            localStorage.setItem('disabilityType', disabilityType);
+            localStorage.setItem('age', age);
+            localStorage.setItem('guardianName', guardianName);
+            localStorage.setItem('guardianEmail', guardianEmail);
+            localStorage.setItem('phone', phone);
+            localStorage.setItem('password', password);
+
+            // Redireciona para a página de login
+            window.location.href = 'login.html';
+        }
+
         document.getElementById('themeToggle').addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
         });
